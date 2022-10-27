@@ -6,7 +6,7 @@ function Login() {
       <section className="h-screen flex items-center justify-center">
         <div className="h-2/4 w-2/4 grid grid-cols-2">
           <div className="w-full bg-slate-50 h-full">
-            <img src="src\Images\LoginImage.jpeg" alt="" />
+            <img src="src\Components\Images\LoginImage.jpeg" alt="" />
           </div>
           <div className="w-full h-full bg-slate-800 flex justify-center items-center">
             <form className="h-5/6 p-10">
