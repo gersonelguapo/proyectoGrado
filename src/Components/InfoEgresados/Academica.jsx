@@ -1,7 +1,10 @@
 import React from 'react'
+import Navbar from '../Navigation/Navbar';
 
 function Academica() {
     return (
+      <>
+      <Navbar/>
         <div className="h-screen flex items-center justify-center">
           <form className="w-full max-w-7xl">
             <div className="flex flex-wrap -mx-3 mb-6">
@@ -153,6 +156,8 @@ function Academica() {
             </div>
           </form>
         </div>
+      </>
+        
       );
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from './Images/LogoTailwind.svg'
+import logo from "../../Images/LogoTailwind.svg";
 
 function Navbar() {
   return (

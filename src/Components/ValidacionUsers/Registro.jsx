@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 function Registro() {
   return (
       <main className="h-screen flex items-center justify-center">
-        <div className="h-4/6 w-4/6 grid grid-cols-2">
-          <div className="w-full h-full">
-            <img className="w-full" src="src\Images\LoginImage.jpeg" alt="" />
+        <div className="h-auto w-4/6 grid grid-cols-2">
+          <div className="w-full h-full bg-slate-800">
+            <img className="w-full h-full" src="src\Images\LoginImage.jpeg" alt="" />
           </div>
           <div className="w-full h-full bg-slate-800 flex items-start">
             <form className="h-5/6 p-10">
