@@ -1,29 +1,9 @@
-import { React, useState, useEffect } from "react";
+import { React, useContext} from "react";
+import { UserContext } from "../../Context/UserContext";
 
 function Dashboard() {
-  const [users, setUsers] = useState([]);
-  const [listUpdated, setListUpdated] = useState(false);
-  useEffect(() => {
-    const getUsers = () => {
-      fetch("http://localhost:3000/api/usuarios")
-        .then((res) => res.json())
-        .then((res) => setUsers(res));
-    };
-    getUsers();
-    setListUpdated(false);
-  }, [listUpdated]);
-
-  const handleDelete = (id) =>{
-    const requestInit = {
-        method: "DELETE"
-      };
   
-      fetch("http://localhost:3000/api/eliminarUsuario/" + id, requestInit)
-        .then((res) => res.text())
-        .then((res) => console.log(res));
-
-    setListUpdated(true);
-  }
+  const {handleDelete, users} = useContext(UserContext);
 
   return (
     <div className="h-screen ">
@@ -152,8 +132,8 @@ function Dashboard() {
                   </thead>
 
                   <tbody className="bg-white">
-                    {users.map((book) => (
-                      <tr key={book.id}>
+                    {users.map((user) => (
+                      <tr key={user.id}>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                           <div className="flex items-center">
                             <div className="flex-shrink-0 h-10 w-10">
@@ -166,7 +146,7 @@ function Dashboard() {
 
                             <div className="ml-4">
                               <div className="text-sm leading-5 font-medium text-gray-900">
-                                {book.nombre}
+                                {user.nombre}
                               </div>
                             </div>
                           </div>
@@ -174,18 +154,18 @@ function Dashboard() {
 
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                           <div className="text-sm leading-5 text-gray-900">
-                            {book.apellido}
+                            {user.apellido}
                           </div>
                         </td>
 
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                           <div className="text-sm leading-5 text-gray-900">
-                            {book.nombre_usuario}
+                            {user.nombre_usuario}
                           </div>
                         </td>
 
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                          {book.contraseña}
+                          {user.contraseña}
                         </td>
 
                         <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
@@ -193,12 +173,15 @@ function Dashboard() {
                             href="#"
                             className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
                           >
-                            {book.fecha_registro}
+                            {user.fecha_registro}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                             <div className="mb-3">
-                                <button onClick={() => handleDelete(book.id)} className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-red-600 text-white hover:bg-red-700">DELETE</button>
+                                <button onClick={() => handleDelete(user.id)} className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-red-600 text-white hover:bg-red-700">DELETE</button>
+                            </div>
+                            <div className="mb-3">
+                                <button className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-red-600 text-white hover:bg-red-700">DELETE</button>
                             </div>
                         </td>
                       </tr>

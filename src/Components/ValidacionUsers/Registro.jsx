@@ -1,55 +1,14 @@
-import { React, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { React, useContext} from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { CreateUserContext } from "../../Context/CreateUserContext";
 
 function Registro() {
-  const [addUser, setAddUser] = useState({
-    nombre: "",
-    apellido: "",
-    nombre_usuario: "",
-    contraseña: "",
-    fecha_registro: "",
-  });
 
-  const handleChange = (e) => {
-    setAddUser({
-      ...addUser,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const navigate = useNavigate();
 
-  let { nombre, apellido, nombre_usuario, contraseña, fecha_registro } =
-    addUser;
+  const { addUser, createUser, handleSubmit} = useContext(CreateUserContext);
 
-  const handleSubmit = () => {
-    if (
-      nombre === "" ||
-      apellido === "" ||
-      nombre_usuario === "" ||
-      contraseña === "" ||
-      fecha_registro === ""
-    ) {
-      alert("Todos los campos son obligatorios para el inicio de sesion");
-      return;
-    }
-
-    const requestInit = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(addUser),
-    };
-
-    fetch("http://localhost:3000/api/crearUsuario", requestInit)
-      .then((res) => res.json())
-      .then((res) => setUsers(res));
-
-    setAddUser({
-      nombre: "",
-      apellido: "",
-      nombre_usuario: "",
-      contraseña: "",
-      fecha_registro: "",
-    });
-  };
+  const {nombre, apellido, nombre_usuario, contraseña, fecha_registro} =  addUser;
 
   return (
     <main className="h-screen flex items-center justify-center">
@@ -71,7 +30,7 @@ function Registro() {
               placeholder="Nombres"
               className="bg-slate-300 p-3 w-full mb-7 rounded-md placeholder:font-bold placeholder:text-slate-700"
               autoFocus
-              onChange={handleChange}
+              onChange={createUser}
               value={nombre}
             />
             <input
@@ -79,7 +38,7 @@ function Registro() {
               name="apellido"
               placeholder="Apellidos"
               className="bg-slate-300 p-3 w-full mb-7 rounded-md placeholder:font-bold placeholder:text-slate-700"
-              onChange={handleChange}
+              onChange={createUser}
               value={apellido}
             />
 
@@ -88,7 +47,7 @@ function Registro() {
               name="nombre_usuario"
               placeholder="nombre_usuario"
               className="bg-slate-300 p-3 w-full mb-7 rounded-md placeholder:font-bold placeholder:text-slate-700"
-              onChange={handleChange}
+              onChange={createUser}
               value={nombre_usuario}
             />
 
@@ -97,7 +56,7 @@ function Registro() {
               name="contraseña"
               placeholder="Contraseña"
               className="bg-slate-300 p-3 w-full mb-7 rounded-md placeholder:font-bold placeholder:text-slate-700"
-              onChange={handleChange}
+              onChange={createUser}
               value={contraseña}
             />
 
@@ -106,7 +65,7 @@ function Registro() {
               name="fecha_registro"
               placeholder="Fecha Registro '00-00-00'"
               className="bg-slate-300 p-3 w-full mb-7 rounded-md placeholder:font-bold placeholder:text-slate-700"
-              onChange={handleChange}
+              onChange={createUser}
               value={fecha_registro}
             />
 
@@ -123,6 +82,7 @@ function Registro() {
             </div> */}
 
             <button
+              onClick={() => navigate("/")}
               className="bg-indigo-500 mt-10 w-full px-4 py-2 text-white rounded-md hover:bg-indigo-400"
               type="submit"
             >

@@ -3,6 +3,7 @@ import { NavLink, useNavigate} from "react-router-dom";
 
 function Login() {
   const navigate = useNavigate();
+  const endpoint = "/profile";
   return (
       <section className="h-screen flex items-center justify-center">
         <div className="h-2/4 w-2/4 grid grid-cols-2">
@@ -33,7 +34,7 @@ function Login() {
                 />{" "}
                 <label className="text-slate-400 capitalize">recuerdame</label>
               </div>
-              <button onClick={() => navigate("/profile")} className="bg-indigo-500 mt-10 w-full px-4 py-2 text-white rounded-md hover:bg-indigo-400">
+              <button onClick={() => navigate(endpoint)} className="bg-indigo-500 mt-10 w-full px-4 py-2 text-white rounded-md hover:bg-indigo-400">
                 Entrar
               </button>
               <NavLink
