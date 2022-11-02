@@ -180,9 +180,9 @@ function Dashboard() {
                             <div className="mb-3">
                                 <button onClick={() => handleDelete(user.id)} className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-red-600 text-white hover:bg-red-700">DELETE</button>
                             </div>
-                            <div className="mb-3">
+                            {/* <div className="mb-3">
                                 <button className="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-red-600 text-white hover:bg-red-700">DELETE</button>
-                            </div>
+                            </div> */}
                         </td>
                       </tr>
                     ))}

@@ -42,7 +42,7 @@ export function CreateUserContextProvider(props) {
 
     fetch("http://localhost:3000/api/crearUsuario", requestInit)
       .then((res) => res.json())
-      .then((res) => setUsers(res));
+      .then((res) => setAddUser(res));
 
     setAddUser({
       nombre: "",
