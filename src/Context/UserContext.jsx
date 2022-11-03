@@ -11,14 +11,11 @@ export function UserContextProvider(props) {
     contraseña: "",
   });
 
-  const [idLog, setIdLog] = useState([]);
-
   const logUser = (e) => {
     setLog({
       ...log,
       [e.target.name]: e.target.value,
     });
-    console.log(log);
   };
 
   let { nombre_usuario, contraseña } = log;
@@ -36,16 +33,9 @@ export function UserContextProvider(props) {
 
     fetch("http://localhost:3000/api/loginusuario", requestLog)
       .then((res) => res.json())
-      .then((res) => setIdLog(res));
+      .then((res) => setLog(res));
 
     
-    console.log(idLog);
-
-    if (idLog.length === 0) {
-      alert("ingrese bien sus credenciales o create una cuenta");
-    } else {
-      alert("Bienvenido");
-    }
 
     setLog({
       nombre_usuario: "",

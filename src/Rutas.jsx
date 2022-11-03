@@ -6,9 +6,9 @@ import Personal from "./Components/InfoEgresados/Personal";
 import Academica from "./Components/InfoEgresados/Academica";
 import NotFound from "./Components/NotFound";
 import FormEgresado from "./Components/InfoEgresados/FormEgresado";
-import Dashboard from "./Components/Navigation/Dashboard";
 import CreatePost from "./Components/SetAnuncios/CreatePost";
 import GetAnuncios from "./Components/SetAnuncios/GetAnuncios";
+import EgresadosView from "./Components/InfoEgresados/EgresadosView";
 
 function Rutas() {
   return (
@@ -18,7 +18,7 @@ function Rutas() {
       <Route path="/personal" element={<Personal />} />
       <Route path="/academica" element={<Academica />} />
       <Route path="/profile" element={<FormEgresado />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/egresados" element={<EgresadosView />} />
       <Route path="/crearpost" element={<CreatePost/>}/>
       <Route path="/anuncios" element={<GetAnuncios/>}/>
       <Route path="*" element={<NotFound />} />

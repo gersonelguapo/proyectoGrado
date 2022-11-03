@@ -2,6 +2,11 @@ import React from "react";
 import Navbar from "../Navigation/Navbar";
 
 function InfoEgresados() {
+   
+  const handleSelect = (e) =>{
+    console.log(e.target.value);
+  }
+
   return (
     <>
       <Navbar />
@@ -120,13 +125,13 @@ function InfoEgresados() {
                 Tipo Documento
               </label>
               <div class="relative">
-                <select
+                <select onChange={handleSelect}
                   class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                   id="grid-state"
                 >
-                  <option>Cedula ciudadania</option>
-                  <option>Tarjeta Identidad</option>
-                  <option>Identificacion extranjera</option>
+                  <option value="Cedula_ciudadania">Cedula ciudadania</option>
+                  <option value="Tarjeta_identidad">Tarjeta Identidad</option>
+                  <option value="Identificacion_extranjera">Identificacion extranjera</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                   <svg
