@@ -71,12 +71,21 @@ function CreatePost() {
                   >
                     Tipo anuncio
                   </label>
-                  <input
+                  {/* <input
                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     id="grid-gender"
                     type="text"
                     placeholder="evento/noticia/curso/oferta empleo"
-                  />
+                  /> */}
+                  <select /*onChange={handleSelect}*/
+                  class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-state"
+                >
+                  <option value="Cedula_ciudadania">evento</option>
+                  <option value="Tarjeta_identidad">noticia</option>
+                  <option value="Identificacion_extranjera">curso</option>
+                  <option> Ofertas</option>
+                </select>
                 </div>
               </div>
               <div class="mb-5 flex justify-center items-center w-full">

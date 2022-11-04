@@ -1,15 +1,14 @@
 import { React, useContext} from "react";
-import { NavLink} from "react-router-dom";
+import { NavLink, useNavigate} from "react-router-dom";
 import { CreateUserContext } from "../../Context/CreateUserContext";
 
 function Registro() {
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { addUser, createUser, handleSubmit} = useContext(CreateUserContext);
 
   const {nombre, apellido, nombre_usuario, contraseña, fecha_registro} =  addUser;
-
   return (
     <main className="h-screen flex items-center justify-center">
       <div className="h-auto w-4/6 grid grid-cols-2">
@@ -82,6 +81,7 @@ function Registro() {
             </div> */}
 
             <button
+              onClick={() => navigate("/")}
               className="bg-indigo-500 mt-10 w-full px-4 py-2 text-white rounded-md hover:bg-indigo-400"
               type="submit"
             >
@@ -101,4 +101,4 @@ function Registro() {
   );
 }
 
-export default Registro;  
+export default Registro;   

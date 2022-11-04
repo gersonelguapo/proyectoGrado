@@ -4,9 +4,18 @@ import { UserContext } from "../../Context/UserContext";
 
 function Login() {
   const navigate = useNavigate();
-  const { log, logUser, logSubmit } = useContext(UserContext);
-  const { nombre_usuario, contraseña } = log;
-  const endpoint = "/profile";
+  const { log, logUser, logSubmit, logEgre} = useContext(UserContext);
+  const { username, password } = log;
+  let endpoint = "";
+
+  if (logEgre.length > 0) {
+    endpoint = "/personal";
+  } 
+
+  if (username === "admin" && password === "admin") {
+    endpoint = "/egresados";
+  }
+
   return (
     <section className="h-screen flex items-center justify-center">
       <div className="h-2/4 w-2/4 grid grid-cols-2">
@@ -19,20 +28,20 @@ function Login() {
               Inicia Sesión
             </h1>
             <input
-              name="nombre_usuario"
+              name="username"
               placeholder="Usuario"
               className="bg-slate-300 p-3 w-full mb-7 rounded-md"
               autoFocus
               onChange={logUser}
-              value={nombre_usuario}
+              value={username}
             />
             <input
-              name="contraseña"
+              name="password"
               type="password"
               placeholder="Contraseña"
               className="bg-slate-300 p-3 w-full mb-7 rounded-md"
               onChange={logUser}
-              value={contraseña}
+              value={password}
             ></input>
             {/* <div className="flex items-baseline ">
                 <input
@@ -44,6 +53,7 @@ function Login() {
                 <label className="text-slate-400 capitalize">recuerdame</label>
               </div> */}
             <button
+              onClick={() => navigate(endpoint)}
               type="submit"
               className="bg-indigo-500 mt-10 w-full px-4 py-2 text-white rounded-md hover:bg-indigo-400"
             >

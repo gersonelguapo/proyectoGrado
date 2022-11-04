@@ -5,43 +5,15 @@ export const UserContext = createContext();
 export function UserContextProvider(props) {
   const [users, setUsers] = useState([]);
   const [listUpdated, setListUpdated] = useState(false);
+  let logEgre = [];
+  let point = "";
 
   const [log, setLog] = useState({
-    nombre_usuario: "",
-    contraseña: "",
+    username: "",
+    password: "",
   });
 
-  const logUser = (e) => {
-    setLog({
-      ...log,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  let { nombre_usuario, contraseña } = log;
-
-  const logSubmit = () => {
-    if (nombre_usuario === "" || contraseña === "") {
-      alert("Todos los campos son obligatorios para el inicio de sesion");
-      return;
-    }
-
-    const requestLog = {
-      method: "GET",
-      params: { nombre_usuario: nombre_usuario, contraseña: contraseña },
-    };
-
-    fetch("http://localhost:3000/api/loginusuario", requestLog)
-      .then((res) => res.json())
-      .then((res) => setLog(res));
-
-    
-
-    setLog({
-      nombre_usuario: "",
-      contraseña: "",
-    });
-  };
+  let { username, password } = log;
 
   useEffect(() => {
     const getUsers = () => {
@@ -65,6 +37,22 @@ export function UserContextProvider(props) {
     setListUpdated(true);
   };
 
+  const logUser = (e) => {
+    setLog({
+      ...log,
+      [e.target.name]: e.target.value,
+      
+    });
+    console.log(log);
+  };
+
+  const logSubmit = (e) => {
+    e.preventDefault();
+    logEgre = users.filter(
+      (user) => user.nombre_usuario === username && user.contraseña === password
+    );
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -73,6 +61,8 @@ export function UserContextProvider(props) {
         log,
         logUser,
         logSubmit,
+        logEgre,
+        point,
       }}
     >
       {props.children}
